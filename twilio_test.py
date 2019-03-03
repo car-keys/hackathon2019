@@ -9,7 +9,7 @@ from watchdog.observers import Observer
     # body="snek")
 
 # read config file
-with open("config.json", "r") as f:
+with open("/home/pi/hackathon2019/config.json", "r") as f:
     config = json.load(f)
 log_file              = config["suricata_log_file_full_path"]
 key_file              = config["suricata_api_key_file"]
