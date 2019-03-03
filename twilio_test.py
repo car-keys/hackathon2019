@@ -1,7 +1,7 @@
 from twilio.rest import Client
 import watchdog
 log_file = "/var/log/suricata/fast.log"
-
+key_file = "key.txt"
 # client = Client(account_sid, auth_token)
 
 # message = client.messages.create(
@@ -10,7 +10,8 @@ log_file = "/var/log/suricata/fast.log"
     # body="snek")    
 
 account_sid = "AC5ec563f144a1a2dc448822e01fffd13f"
-auth_token = "<token>"
+with open(key_file, "r") as f:
+    auth_token = str(f.read())
 account_number = "+15138153419"
 test_recipient_number = "15132771334"
 
