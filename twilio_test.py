@@ -18,7 +18,7 @@ test_recipient_number = "15132771334"
 
 
 class FileModifiedEventHandler(FileSystemEventHandler):
-    def on_modified(event):
+    def on_modified(self, event):
         if not event.is_directory:
             handle_file_change(event)
 
