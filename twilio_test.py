@@ -44,7 +44,7 @@ class TextSender(Client):
 def handle_file_change(event):
     print(event.src_path)
     sender = TextSender(account_sid, auth_token, account_number)
-    sender.send_text(test_recipient_number, "ping sent.")
+    sender.send_text(test_recipient_number, f"Potential threat detected at time {str(datetime.datetime.now())}. Check logs for more information.")
     # with open(log_file, 'r') as f:
     #   newline = f.readlines()[-1]
 
