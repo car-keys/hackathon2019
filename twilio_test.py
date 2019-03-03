@@ -1,3 +1,4 @@
+import time
 from twilio.rest import Client
 from watchdog.events import FileSystemEventHandler
 from watchdog.observers import Observer
@@ -19,6 +20,7 @@ test_recipient_number = "15132771334"
 
 class FileModifiedEventHandler(FileSystemEventHandler):
     def on_modified(event):
+        print('Event!')
         if not event.is_directory:
             handle_file_change(event)
 
@@ -50,6 +52,7 @@ observer.schedule(event_handler, observed_path)
 observer.start()
 try:
     while True:
+        print('sleeping')
         time.sleep(1)
 except KeyboardInterrupt:
     observer.stop()
