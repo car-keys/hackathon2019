@@ -12,10 +12,10 @@ from watchdog.observers import Observer
 # read config file
 with open("config.json", "r") as f:
     config = json.load(f)
-log_file = config["suricata_log_file_full_path"]
-key_file = config["suricata_api_key_file"]
-account_sid = config["twilio_account_sid"]
-account_number = config["twilio_account_phone_number"]
+log_file              = config["suricata_log_file_full_path"]
+key_file              = config["suricata_api_key_file"]
+account_sid           = config["twilio_account_sid"]
+account_number        = config["twilio_account_phone_number"]
 test_recipient_number = config["twilio_recipient_number"]
 
 # grab api token. kept seperate so its not included in the repo
