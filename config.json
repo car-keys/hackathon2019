@@ -1,0 +1,9 @@
+{
+    suricata_log_file_full_path : "/var/log/suricata/fast.log",
+    suricata_log_file_containing_path : "/var/log/suricata/",
+    suricata_api_key_file: "key.txt",
+    twilio_account_sid : "AC5ec563f144a1a2dc448822e01fffd13f",
+    twilio_account_phone_number : "+15138153419",
+    twilio_recipient_number : "15132771334"
+    
+}
