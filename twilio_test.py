@@ -1,5 +1,6 @@
 from twilio.rest import Client
-import watchdog
+import watchdog.events import FileSystemEventHandler
+import watchdog.observers import Observer
 log_file = "/var/log/suricata/fast.log"
 key_file = "key.txt"
 # client = Client(account_sid, auth_token)
@@ -16,7 +17,7 @@ account_number = "+15138153419"
 test_recipient_number = "15132771334"
 
 
-class FileModifiedEventHandler(watchdog.events.FileSystemEventHandler):
+class FileModifiedEventHandler(FileSystemEventHandler):
     def on_modified(event):
         if not event.is_directory:
             handle_file_change(event)
@@ -44,7 +45,7 @@ def handle_file_change(event):
 
 event_handler = FileModifiedEventHandler()
 observed_path = "/var/log/suricata/"
-observer = watchdog.Observer()
+observer = Observer()
 observer.schedule(event_handler, observed_path)
 observer.start()
 try:
