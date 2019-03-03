@@ -20,9 +20,7 @@ test_recipient_number = "15132771334"
 
 class FileModifiedEventHandler(FileSystemEventHandler):
     def on_modified(self, event):
-        print('Event!')
-
-        if not event.is_directory:
+        if not event.is_directory and event.src_path==log_file:
             handle_file_change(event)
 
 
@@ -40,10 +38,10 @@ class TextSender(Client):
         
 def handle_file_change(event):
     print(event.src_path)
-    # sender = TextSender(account_sid, auth_token, account_number)
-    # sender.send_text(test_recipient_number, "ping sent.")
+    sender = TextSender(account_sid, auth_token, account_number)
+    sender.send_text(test_recipient_number, "ping sent.")
     # with open(log_file, 'r') as f:
-    #    newline = f.readlines()[-1]
+    #   newline = f.readlines()[-1]
 
 
 event_handler = FileModifiedEventHandler()
@@ -52,8 +50,8 @@ observer = Observer()
 observer.schedule(event_handler, observed_path)
 observer.start()
 try:
+    print('Online')
     while True:
-        print('sleeping')
         time.sleep(1)
 except KeyboardInterrupt:
     observer.stop()
