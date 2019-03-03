@@ -2,8 +2,6 @@ import time, json
 from twilio.rest import Client
 from watchdog.events import FileSystemEventHandler
 from watchdog.observers import Observer
-min_message_delay = 3
-msg_in_delay = False
 # client = Client(account_sid, auth_token)
 # message = client.messages.create(
     # to="=19374896142",
@@ -35,16 +33,12 @@ class TextSender(Client):
         super().__init__(sid, token)
         self.account_phone = account_phone_number
     def send_text(self, recipient_number, message):
-        global msg_in_delay
-        if not msg_in_delay:
-            msg_in_delay = True
-            messageid = self.messages.create(
-                to=recipient_number,
-                from_=self.account_phone,
-                body=message)
-            time.sleep(min_message_delay)
-            msg_in_delay = False
-            return messageid
+        msg_in_delay = True
+        messageid = self.messages.create(
+            to=recipient_number,
+            from_=self.account_phone,
+            body=message)
+        return messageid
 
 # called when log file changes
 def handle_file_change(event):
