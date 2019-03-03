@@ -44,8 +44,8 @@ class TextSender(Client):
 def handle_file_change(event):
     print(event.src_path)
     sender = TextSender(account_sid, auth_token, account_number)
-    sender.send_text(test_recipient_number, f"Potential threat detected at time {str(datetime.datetime.now())}. Check logs for more information.")
-
+    msg = "Potential threat detected at time " + str(datetime.datetime.now()) + ". Check logs for more information."
+    sender.send_text(test_recipient_number, msg)
 # set up watchdog event observer
 event_handler = FileModifiedEventHandler()
 observed_path = "/var/log/suricata/"
