@@ -1,6 +1,6 @@
 from twilio.rest import Client
-import watchdog.events import FileSystemEventHandler
-import watchdog.observers import Observer
+from watchdog.events import FileSystemEventHandler
+from watchdog.observers import Observer
 log_file = "/var/log/suricata/fast.log"
 key_file = "key.txt"
 # client = Client(account_sid, auth_token)
