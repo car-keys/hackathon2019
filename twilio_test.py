@@ -3,7 +3,7 @@ from twilio.rest import Client
 from watchdog.events import FileSystemEventHandler
 from watchdog.observers import Observer
 log_file = "/var/log/suricata/fast.log"
-key_file = "key.txt"
+key_file = "/home/pi/hackathon2019/key.txt"
 # client = Client(account_sid, auth_token)
 
 # message = client.messages.create(
