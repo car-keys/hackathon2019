@@ -35,10 +35,9 @@ class TextSender(Client):
         super().__init__(sid, token)
         self.account_phone = account_phone_number
     def send_text(self, recipient_number, message):
-        global last_sent_time, msg_in_delay
+        global msg_in_delay
         if not msg_in_delay:
             msg_in_delay = True
-            last_sent_time = curr_time
             messageid = self.messages.create(
                 to=recipient_number,
                 from_=self.account_phone,
